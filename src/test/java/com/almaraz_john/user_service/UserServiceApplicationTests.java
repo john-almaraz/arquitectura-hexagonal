@@ -9,5 +9,8 @@ class UserServiceApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
+	@Test
+	void mainMethodTest() {
+		UserServiceApplication.main(new String[]{});
+	}
 }
