@@ -9,6 +9,8 @@ This project consists of a microservice with basic CRUD operations that demonstr
 * **Persistence:** JPA/Hibernate with MySQL
 * **Architecture:** Hexagonal (Ports & Adapters)
 * **Service Exposure:** RESTFUL APIs
+* **Testing:** JUnit5 & Mockito
+* **Password Encryption:** Using BCryptPasswordEncoder for Secure Storage.
 
 ## Project Architecture
 The system is designed following the principles of hexagonal architecture to decouple business logic from frameworks and infrastructure.
