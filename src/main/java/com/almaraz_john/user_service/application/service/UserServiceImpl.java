@@ -33,10 +33,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO create(UserCreateCommand command) {
         UserDTO userDTO = command.getUserDTO();
+        Email email = new Email(userDTO.getEmail());
+
+        if (repository.getUserByEmail(email).isPresent()){
+            throw  new UserNotFoundException("User with email: " + email.email() + " already exist.");
+        }
+
         User user = new User(
                 ID.create(),
                 new FullName(userDTO.getFirstName(), userDTO.getLastName()),
-                new Email(userDTO.getEmail()),
+                email,
                 new Password(userDTO.getPassword()),
                 userDTO.getRole()
         );
