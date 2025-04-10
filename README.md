@@ -9,8 +9,10 @@ This project consists of a microservice with basic CRUD operations that demonstr
 * **Persistence:** JPA/Hibernate with MySQL
 * **Architecture:** Hexagonal (Ports & Adapters)
 * **Service Exposure:** RESTFUL APIs
+* **Documentation:** Swagger (OpenAPI)
 * **Testing:** JUnit5 & Mockito
 * **Password Encryption:** Using BCryptPasswordEncoder for Secure Storage.
+
 
 ## Project Architecture
 The system is designed following the principles of hexagonal architecture to decouple business logic from frameworks and infrastructure.
@@ -19,6 +21,12 @@ The system is designed following the principles of hexagonal architecture to dec
 + **Domain:** Contains pure business logic (domain entities, rules, and services).
 + **Application:** Defines use cases and exposes ports for interacting with the infrastructure layer.
 + **Infrastructure:** Implements adapters for the database and APIs.
+
+## API Documentation
+This project uses **Swagger** for API documentation and testing. Once you run the application, you can access the Swagger UI using the following URL:
+`http://localhost:8080/swagger-ui/index.html`
+Swagger automatically generates and displays the available endpoints along with request/response models, improving the developer experience and enhancing the API usability.
+
 
 ## Endpoints
 + `POST /users` - Create a user.
@@ -71,4 +79,10 @@ You can run this application of 2 ways:
    ```
     + You should see containers named user-service and mysql-user.
 + ### Test the methods 
+
+  You can import the collection of methods `docs/postman_collection.json` into your Postman and start testing the endpoints.
+  
+  With the updated Swagger documentation, you now have a friendly interface at `http://localhost:8080/swagger-ui/index.html` to explore and test the API endpoints.
+
   You can import the collection of methods `docs/postman_collection.json` into your Postman and start testing the methods. 
+
