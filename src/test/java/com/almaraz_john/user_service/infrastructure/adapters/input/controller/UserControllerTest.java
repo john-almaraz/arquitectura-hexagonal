@@ -73,7 +73,7 @@ public class UserControllerTest {
         String commandJson = mapper.writeValueAsString(command);
         String expectedJson = mapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(post("/users")
+        mockMvc.perform(post("/api/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(commandJson))
                 .andExpect(status().isCreated())
@@ -86,7 +86,7 @@ public class UserControllerTest {
 
         String expectedJson = mapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(get("/users/{userId}", USER_ID))
+        mockMvc.perform(get("/api/users/{userId}", USER_ID))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedJson));
     }
@@ -97,7 +97,7 @@ public class UserControllerTest {
 
         String expectedJson = mapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(get("/users/email/{email}", USER_EMAIL))
+        mockMvc.perform(get("/api/users/email/{email}", USER_EMAIL))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedJson));
     }
@@ -108,7 +108,7 @@ public class UserControllerTest {
 
         String expectedJson = mapper.writeValueAsString(Collections.singletonList(userDTO));
 
-        mockMvc.perform(get("/users"))
+        mockMvc.perform(get("/api/users"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedJson));
     }
@@ -117,7 +117,7 @@ public class UserControllerTest {
     void testUpdateUser() throws Exception {
         String userDTOJson = mapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(put("/users/{userId}", USER_ID)
+        mockMvc.perform(put("/api/users/{userId}", USER_ID)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userDTOJson))
                 .andExpect(status().isNoContent());
@@ -130,7 +130,7 @@ public class UserControllerTest {
         UserUpdatePasswordCommand command = new UserUpdatePasswordCommand(USER_ID, USER_PASSWORD, "NewPass1$");
         String commandJson = mapper.writeValueAsString(command);
 
-        mockMvc.perform(put("/users/{userId}/password", USER_ID)
+        mockMvc.perform(put("/api/users/{userId}/password", USER_ID)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(commandJson))
                 .andExpect(status().isNoContent());
@@ -144,7 +144,7 @@ public class UserControllerTest {
         UserUpdatePasswordCommand command = new UserUpdatePasswordCommand(USER_ID, USER_PASSWORD, "NewPass1$");
         String commandJson = mapper.writeValueAsString(command);
 
-        mockMvc.perform(put("/users/{userId}/password", pathUserId)
+        mockMvc.perform(put("/api/users/{userId}/password", pathUserId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(commandJson))
                 .andExpect(status().isBadRequest());
@@ -152,7 +152,7 @@ public class UserControllerTest {
 
     @Test
     void testDeleteUser() throws Exception {
-        mockMvc.perform(delete("/users/{userId}", USER_ID))
+        mockMvc.perform(delete("/api/users/{userId}", USER_ID))
                 .andExpect(status().isNoContent());
 
         Mockito.verify(userService).deleteUser(any(UserDeleteCommand.class));
