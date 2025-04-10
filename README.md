@@ -10,6 +10,9 @@ This project consists of a microservice with basic CRUD operations that demonstr
 * **Architecture:** Hexagonal (Ports & Adapters)
 * **Service Exposure:** RESTFUL APIs
 * **Documentation:** Swagger (OpenAPI)
+* **Testing:** JUnit5 & Mockito
+* **Password Encryption:** Using BCryptPasswordEncoder for Secure Storage.
+
 
 ## Project Architecture
 The system is designed following the principles of hexagonal architecture to decouple business logic from frameworks and infrastructure.
@@ -76,6 +79,10 @@ You can run this application of 2 ways:
    ```
     + You should see containers named user-service and mysql-user.
 + ### Test the methods 
+
   You can import the collection of methods `docs/postman_collection.json` into your Postman and start testing the endpoints.
   
   With the updated Swagger documentation, you now have a friendly interface at `http://localhost:8080/swagger-ui/index.html` to explore and test the API endpoints.
+
+  You can import the collection of methods `docs/postman_collection.json` into your Postman and start testing the methods. 
+
